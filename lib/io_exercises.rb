@@ -21,8 +21,10 @@ def guessing_game
     total_guesses += 1
     puts "Number of guesses #{total_guesses}"
   end
+  puts "__________________________________________________________________________"
   puts "The correct number was #{number}"
   puts "It took you #{total_guesses} guesses in total to get to the right number"
+  puts "__________________________________________________________________________"
 end
 
 def guess_number
@@ -41,6 +43,26 @@ def miss(guess, num)
   end
 end
 
-if $PROGRAM_NAME == __FILE__
-  guessing_game
+
+
+def shuffle_files
+  puts "Please enther the name of the file you would like to have shuffled:"
+  file_name = gets.chomp
+  file_content = File.readlines(file_name)
+  file_content.shuffle!
+  shuffled_content = File.open("#{file_name}-shuffled", "w")
+  file_content.each do |line|
+    shuffled_content.puts line
+  end
+  shuffled_content.close
+  puts "File shuffled and saved as #{file_name}-shuffled"
 end
+
+
+if $0 == __FILE__
+  shuffle_files
+end
+
+# if $0 == __FILE__
+#   guessing_game
+# end
