@@ -38,7 +38,7 @@ end
 def miss(guess, num)
   if guess < num
     puts "You geussed too low"
-  else
+  elsif guess > num
     puts "You guessed too high"
   end
 end
